@@ -7,7 +7,7 @@ const About = () => {
     <div className="home-container">
       <div className="welcome-text">
         <h1>About</h1>
-        <p>Your one-stop solution for everything you need.</p>
+        <p>Your one-stop solution for everything.</p>
       </div>
       
 
