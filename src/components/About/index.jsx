@@ -4,11 +4,7 @@ import Footer from '../Footer';
 
 const About = () => {
   return (
-    <div className="home-container">
-      <div className="welcome-text">
-        <h1>About</h1>
-        <p>Your one-stop solution for everything.</p>
-      </div>
+   
       <section class="bg-light py-5 text-center">
         <div id="Watch Now" class="container">
             <h2>Watch Now</h2>
