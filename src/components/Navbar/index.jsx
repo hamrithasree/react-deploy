@@ -14,13 +14,14 @@ const Navbar = () => {
       <div className="logo">
         <img src={logo} alt="Logo" />
       </div>
-      <button className="btn btn-success">click</button>
+      
       <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
         <ul>
-          <li><Link to="/">Home</Link></li>
+          <li><Link to="/">Catogories</Link></li>
           <li><Link to="/watch">Watch Now</Link></li>
-          <li><Link to="/services">Services</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/services">Review</Link></li>
+          <li><Link to="/shop">Shop Now</Link></li>
+          <li><Link to="/contact">Contact Us</Link></li>
         </ul>
       </div>
       
