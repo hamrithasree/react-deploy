@@ -1,8 +1,8 @@
 import React from 'react';
-import './about.css';
+import './watch.css';
 import Footer from '../Footer';
 
-const About = () => {
+const Watch = () => {
   return (
    
       <section class="bg-light py-5 text-center">
@@ -17,4 +17,4 @@ const About = () => {
   )
 };
 
-export default About;
+export default Watch;
