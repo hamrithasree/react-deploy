@@ -1,48 +1,72 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './home.css';
 import Footer from '../Footer';
+
 const Home = () => {
+  const slidesRef = useRef(null);
+  const [index, setIndex] = useState(0);
+  const slideImages = [
+    "https://tavesper.tech/wp-content/uploads/2021/06/Acer-Aspire-3_Visual.jpg",
+    "https://www.soyacincau.com/wp-content/uploads/2020/11/Acer-Aspire-5_Promotion-3000x1576.png",
+    "https://www.soyacincau.com/wp-content/uploads/2020/11/Acer-Swift-3X-promotion.jpg",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % slideImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval); 
+  }, [slideImages.length]);
+
+  const showSlide = (newIndex) => {
+    if (newIndex < 0) {
+      setIndex(slideImages.length - 1);
+    } else if (newIndex >= slideImages.length) {
+      setIndex(0);
+    } else {
+      setIndex(newIndex);
+    }
+  };
+
   return (
-    <div id="slideshow" className="carousel slide" data-bs-ride="carousel">
-      <div className="carousel-inner">
-        <div className="carousel-item active">
+    <div className="slider">
+      <div
+        ref={slidesRef}
+        className="slides"
+        style={{
+          transform: `translateX(-${index * 100}%)`,
+          display: 'flex',
+          transition: 'transform 0.5s ease-in-out',
+        }}
+      >
+        {slideImages.map((src, i) => (
           <img
-            src="https://tavesper.tech/wp-content/uploads/2021/06/Acer-Aspire-3_Visual.jpg"
-            className="d-block w-100"
-            alt="Acer Aspire 3 Laptop"
+            key={i}
+            src={src}
+            alt={`Slide ${i + 1}`}
+            style={{ width: '100%', height: 'auto' }}
           />
-        </div>
-        <div className="carousel-item">
-          <img
-            src="https://www.soyacincau.com/wp-content/uploads/2020/11/Acer-Aspire-5_Promotion-3000x1576.png"
-            className="d-block w-100"
-            alt="Acer Aspire 5 Laptop"
-          />
-        </div>
-        <div className="carousel-item">
-          <img
-            src="https://www.soyacincau.com/wp-content/uploads/2020/11/Acer-Swift-3X-promotion.jpg"
-            className="d-block w-100"
-            alt="Acer Swift 3X Laptop"
-          />
-        </div>
+        ))}
       </div>
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#slideshow"
-        data-bs-slide="prev"
-      >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#slideshow"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-      </button>
+      <div className="navigation">
+        <button className="prev" onClick={() => showSlide(index - 1)}>
+          &#10094;
+        </button>
+        <button className="next" onClick={() => showSlide(index + 1)}>
+          &#10095;
+        </button>
+      </div>
+      <div className="indicators">
+        {slideImages.map((_, i) => (
+          <button
+            key={i}
+            className={`dot ${i === index ? 'active' : ''}`}
+            onClick={() => showSlide(i)}
+            aria-label={`Go to slide ${i + 1}`}
+          ></button>
+        ))}
+      </div>
       <Footer />
     </div>
   );

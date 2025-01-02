@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Watch from "./components/watch";
 
+
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
   speedAsDuration: true,
@@ -33,7 +34,8 @@ const App = () => {
           <Route path="/review" element={<Review />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
-        </Routes>
+          
+                  </Routes>
       <Footer/>
       </div>
     </Router>
