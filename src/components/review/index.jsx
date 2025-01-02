@@ -41,6 +41,8 @@ const Review = () => {
           </blockquote>
         </div>
       </div>
+      {/* Include the Footer component here */}
+      <Footer />
     </div>
   );
 };

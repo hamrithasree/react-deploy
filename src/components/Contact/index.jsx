@@ -9,8 +9,8 @@ const Contact = () => {
         <h1>Contact</h1>
         <p>Your one-stop solution for everything.</p>
       </div>
-      
-
+      {/* Include Footer */}
+      <Footer />
     </div>
   );
 };
